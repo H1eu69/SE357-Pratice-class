@@ -1,0 +1,102 @@
+@startuml
+skinparam actorStyle awesome
+left to right direction
+
+actor "Nhân viên" as employee
+actor "Quản lý" as manager
+
+employee <|- manager
+
+usecase "Đăng nhập" as login
+
+rectangle "Hệ thống" as SystemFeatures {
+  usecase "Quản lý sản phẩm" as manageProducts
+  usecase "Quản lý đơn hàng" as manageOrders
+  usecase "Quản lý kho" as manageWarehouse
+  usecase "Thống kê chi nhánh" as statistic
+
+  usecase "Thống kê, báo cáo" as adminStatistic
+  usecase "Quản lý nhân sự" as manageStaffs
+  usecase "Quản lý chi nhánh" as manageBranches
+  usecase "Quản lý đối tác" as managePartner
+
+  usecase "Chi tiết sản phẩm" as productDetails
+  usecase "Chỉnh sửa thông\ntin sản phẩm" as editProductInfo
+
+  usecase "Tạo đơn hàng" as createOrder
+  usecase "Xem chi tiết đơn" as orderDetails
+
+  usecase "Xem thông tin kho" as warehouseDetails
+  usecase "Nhập hàng" as stockIn
+
+  usecase "Xem doanh thu\nngày/tuần/tháng" as viewStatistic
+  usecase "Xuất báo cáo" as exportReport
+
+  usecase "Xem thông tin nhân viên" as staffDetails
+  usecase "Chỉnh sửa thông tin" as editStaffProfile
+  usecase "Quản lý tài khoản\nnhân viên" as manageStaffAccount
+  usecase "Tạo tài khoản" as createStaffAccount
+  usecase "Vô hiệu hóa tài khoản" as dismissStaffAccount
+
+  usecase "Chỉnh sửa thông tin" as updateBranches
+  usecase "Tạo mới/Dừng hoạt động" as cre_delBranches
+  usecase "Danh sách nhân viên" as staffInBranch
+  usecase "Thêm nhân viên" as addStaffInBranch
+  usecase "Xóa nhân viên" as delStaffInBranch
+
+  usecase "Thêm đối tác" as addPartner
+  usecase "Dừng làm việc" as dismissPartner
+  usecase "Danh sách sản phẩm" as partnerProducts
+  usecase "Thêm sản phẩm" as addPartnerProducts
+  usecase "Dừng cung cấp" as delPartnerProducts
+  usecase "Lịch sử nhập hàng" as stockInHistory
+
+  note bottom of warehouseDetails: Số lượng hàng tồn/\nSản phẩm sắp hết/Hàng ế
+  note bottom of viewStatistic: Lợi nhuận/Số lượng sản phẩm/\nSản phẩm bán chạy
+  note bottom of adminStatistic: Thống kê về chi nhánh/Sản phẩm/Nhân viên/\nLợi nhuận/Xem và xuất báo cáo
+}
+
+SystemFeatures ..> login: <<include>>
+
+employee --> manageProducts
+employee --> manageOrders
+employee --> manageWarehouse
+employee --> statistic
+
+manager --> adminStatistic
+manager --> manageStaffs
+manager --> manageBranches
+manager --> managePartner
+
+manageProducts ..> productDetails: <<extends>>
+manageProducts ..> editProductInfo: <<extends>>
+
+manageOrders ..> createOrder: <<extends>>
+manageOrders ..> orderDetails: <<extends>>
+
+manageWarehouse ...> warehouseDetails: <<extends>>
+manageWarehouse ...> stockIn: <<extends>>
+
+statistic ..> viewStatistic: <<extends>>
+statistic ..> exportReport: <<extends>>
+
+manageStaffs ..> staffDetails: <<extends>>
+manageStaffs ..> editStaffProfile: <<extends>>
+manageStaffs ..> manageStaffAccount: <<extends>>
+manageStaffAccount ..> createStaffAccount: <<extends>>
+manageStaffAccount ..> dismissStaffAccount: <<extends>>
+
+manageBranches ..> updateBranches: <<extends>>
+manageBranches ..> cre_delBranches: <<extends>>
+manageBranches ..> staffInBranch: <<extends>>
+staffInBranch ..> addStaffInBranch: <<extends>>
+staffInBranch ..> delStaffInBranch: <<extends>>
+
+managePartner ..> addPartner: <<extends>>
+managePartner ..> dismissPartner: <<extends>>
+managePartner ..> partnerProducts: <<extends>>
+managePartner ..> stockInHistory: <<extends>>
+partnerProducts ..> addPartnerProducts: <<extends>>
+partnerProducts ..> delPartnerProducts: <<extends>>
+
+@enduml
