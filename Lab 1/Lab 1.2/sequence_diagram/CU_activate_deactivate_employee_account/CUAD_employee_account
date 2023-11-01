@@ -1,0 +1,51 @@
+@startuml
+actor User
+participant "Client" as C
+participant "Server" as S
+database Database
+
+User -> C: Requests to create an employee account
+activate C
+C --> User: Display form to create employee account
+User -> C: Input employee account information
+C -> S: Sends check username request with proposed username
+activate S
+S -> Database: Checks if username exists
+activate Database
+Database --> S: Returns username existence status
+alt Username exists
+    S --> C: Sends username existence failure message
+else Username does not exist
+    C -> S: Sends create request with employee details
+    S -> Database: Saves employee information
+    Database --> S: Confirmation of successful account creation
+    S --> C: Sends creation success message
+end
+deactivate Database
+deactivate C
+deactivate S
+
+User -> C: Requests to activate an employee account
+activate C
+C -> S: Sends activation request for the employee account
+activate S
+S -> Database: Activates the employee account
+activate Database
+Database --> S: Confirmation of successful activation
+deactivate Database
+S --> C: Sends activation success message
+deactivate C
+deactivate S
+
+User -> C: Requests to deactivate an employee account
+activate C
+C -> S: Sends deactivation request for the employee account
+activate S
+S -> Database: Deactivates the employee account
+activate Database
+Database --> S: Confirmation of successful deactivation
+deactivate Database
+S --> C: Sends deactivation success message
+deactivate C
+deactivate S
+@enduml

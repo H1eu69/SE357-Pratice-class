@@ -1,0 +1,26 @@
+@startuml
+actor User
+participant "Client" as C
+participant "Server" as S
+
+User -> C: Enters credentials
+activate User
+activate C
+
+C -> S: Sends login request
+activate S
+
+S -> S: Validates credentials
+alt Valid credentials
+    S --> C: Sends success message
+else Invalid credentials
+    S --> C: Sends failure message
+end
+
+C --> User: Display message
+
+deactivate S
+deactivate C
+deactivate User
+
+@enduml
