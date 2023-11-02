@@ -4,6 +4,7 @@ participant "Client" as C
 participant "Server" as S
 database Database
 
+activate User
 User -> C: Requests to create a branch
 activate C
 C --> User: Display form to create branch

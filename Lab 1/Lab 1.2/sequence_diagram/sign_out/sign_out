@@ -3,8 +3,8 @@ actor User
 participant "Client" as C
 participant "Server" as S
 
-User -> C: Requests sign-out
 activate User
+User -> C: Requests sign-out
 activate C
 
 C -> S: Sends logout request
@@ -14,7 +14,6 @@ S -> S: Logs out the user
 S -> C: Sends logout confirmation
 C -> User: Sign-out
 
-deactivate User
 deactivate C
 deactivate S
 @enduml

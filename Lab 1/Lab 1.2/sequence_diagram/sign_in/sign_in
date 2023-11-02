@@ -3,8 +3,8 @@ actor User
 participant "Client" as C
 participant "Server" as S
 
-User -> C: Enters credentials
 activate User
+User -> C: Enters credentials
 activate C
 
 C -> S: Sends login request
@@ -21,6 +21,5 @@ C --> User: Display message
 
 deactivate S
 deactivate C
-deactivate User
 
 @enduml

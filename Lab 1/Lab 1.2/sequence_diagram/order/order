@@ -1,0 +1,34 @@
+@startuml
+actor User
+participant "Client" as C
+participant "Server" as S
+database Database
+
+activate User
+User -> C: Starts order process
+activate C
+loop Selects items
+    User -> C: Selects an item
+    C -> User: Displays selected item
+end
+User -> C: Proceeds to checkout
+C -> S: Sends order request with item details
+activate S
+S -> Database: Checks item availability
+activate Database
+Database --> S: Returns availability status
+alt Items available
+    S -> Database: Reserve items for order
+    Database --> S: Confirmation of item reservation
+    S -> S: Process payment
+    S --> C: Sends payment confirmation
+    S -> Database: Store order details
+    Database --> S: Saves order information
+    deactivate Database
+    S --> C: Sends order confirmation
+else Items unavailable
+    S --> C: Sends unavailability message
+end
+deactivate S
+deactivate C
+@enduml
