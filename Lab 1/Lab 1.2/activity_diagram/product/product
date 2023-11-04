@@ -1,0 +1,47 @@
+
+@startuml
+|User|
+start
+:Requests to create a product;
+|User|
+|Client|
+:Display form to create product;
+:Input product data;
+|Client|->:Sends create request with product details;
+|Server|
+:Saves product information;
+|Database|
+:Confirmation of successful creation;
+|Database|
+|Server|->|Client|:Sends creation success message;
+stop
+
+|User|
+start
+:Requests to update a product;
+|User|
+|Client|
+:Display form to update product;
+:Input new data;
+|Client|->:Sends update request with modified product details;
+|Server|
+:Updates product information;
+|Database|
+:Confirmation of successful update;
+|Database|
+|Server|->|Client|:Sends update success message;
+stop
+
+|User|
+start
+:Requests to read a product;
+|User|
+|Client|->:Sends read request for product information;
+|Server|
+:Retrieves product information;
+|Database|
+:Sends product details;
+|Database|
+|Server|->|Client|:Sends product information;
+stop
+@enduml
