@@ -1,0 +1,107 @@
+@startuml
+abstract class User
+
+class Account {
+  String id
+  String uid
+  Date dateCreated
+  int status
+
+  void UpdateStatus()
+}
+
+class User {
+  String id
+  String name
+  Date birthDay
+  String phone
+  String email
+  File image
+  double salary
+
+  void UpdateInfo()
+}
+
+class Manager {}
+
+class Employee {
+  String branchId
+}
+
+class Product {
+  String productId
+  String partnerId
+  String productName
+  String description
+  File image
+  int price
+  int numberInStock
+  ProductType type
+  int totalSold
+
+  void UpdateInfo()
+  void Sold()
+}
+
+class ProductType {
+  String id
+  String typeName
+}
+
+class Order {
+  String id
+  String totalPrice
+  Date date
+  String branchId
+  int status
+  List<Product> products
+
+  void AddProduct(Product)
+  void RemoveProduct(id)
+  void UpdateQuantity(id, number)
+}
+
+class Branch {
+  String branchId
+  String address
+  LatLng position
+  String name
+  String phone
+  String email
+  int status
+
+  void UpdateBranch()
+}
+
+class Partner {
+  String id
+  int status
+  String name
+  String phone
+  String email
+  Map<productId, int> supplyStatus
+
+  void UpdateSupplyStatus(String productId)
+  void AddNewProduct(String productId)
+}
+
+class SupplierInvoice {
+  String id
+  String partnerId
+  Date date
+  int totalPrice
+  int status
+  Map<String, int> products
+}
+
+User "1" *-- "0..1" Account : has
+
+User <|-- Manager
+User <|-- Employee
+
+Product *-- ProductType
+
+Order "1" o-- "0..*" Product : contains
+
+@enduml
+

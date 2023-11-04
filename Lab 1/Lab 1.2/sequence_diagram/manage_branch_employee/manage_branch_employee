@@ -1,0 +1,48 @@
+@startuml
+actor User
+participant "Client" as C
+participant "Server" as S
+database Database
+
+activate User
+User -> C: Requests to view branch information
+activate C
+C -> S: Sends a request to view branch information
+activate S
+S -> Database: Retrieves branch details
+activate Database
+Database --> S: Sends branch information
+S --> C: Sends the branch information to view
+C --> User: Displays the branch information
+deactivate Database
+deactivate S
+deactivate C
+
+User -> C: Requests to view branch's employees
+activate C
+C -> S: Sends a request to view branch's employees
+activate S
+S -> Database: Retrieves the branch's employees
+activate Database
+Database --> S: Sends branch's employees data
+S --> C: Sends the branch's employees data
+C --> User: Displays the employee data
+deactivate Database
+deactivate S
+deactivate C
+
+User -> C: Chooses an employee to add or confirms removal
+activate C
+C --> User: Displays a form to confirm
+User -> C: Confirm action
+C -> S: Sends the request
+activate S
+S -> Database: Updates the data
+activate Database
+Database --> S: Sends a success message
+S --> C: Sends a success message
+C --> User: Displays a success message and updates the UI
+deactivate Database
+deactivate S
+deactivate C
+@enduml

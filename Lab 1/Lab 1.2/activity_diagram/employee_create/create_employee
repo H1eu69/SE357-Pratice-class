@@ -1,0 +1,12 @@
+@startuml
+start
+:Request to Create Employee;
+:Collect Employee Information;
+:Validate Data;
+if (Data is Valid?) then (Yes)
+  :Create Employee Record;
+else (No)
+  :Show Error Message;
+endif
+stop
+@enduml

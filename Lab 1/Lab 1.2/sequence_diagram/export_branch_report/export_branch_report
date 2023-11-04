@@ -1,0 +1,22 @@
+@startuml
+actor User
+participant "Client" as C
+participant "Server" as S
+database Database
+
+activate User
+User -> C: Selects branch and month for report
+activate C
+C --> User: Displays selected branch and month
+User -> C: Confirms branch and month selection
+C -> S: Sends export report request with branch and month details
+activate S
+S -> Database: Gathers branch data for the selected month
+activate Database
+Database --> S: Branch data for the selected month
+deactivate Database
+S -> S: Generate report
+S --> C: Sends the generated report
+deactivate S
+deactivate C
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+actor User
+participant "Client" as C
+participant "Server" as S
+
+activate User
+User -> C: Requests sign-out
+activate C
+
+C -> S: Sends logout request
+activate S
+
+S -> S: Logs out the user
+S -> C: Sends logout confirmation
+C -> User: Sign-out
+
+deactivate C
+deactivate S
+@enduml

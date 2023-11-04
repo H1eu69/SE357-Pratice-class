@@ -1,0 +1,13 @@
+@startuml
+start
+: Enters credentials;
+: Sends login request;
+: Validates credentials;
+if (Valid credentials?) then (yes)
+  :Sign in to App;
+  kill
+else (no)
+  :Sends failure message;
+  stop
+endif
+@enduml
