@@ -1,0 +1,19 @@
+@startuml
+start
+: Select partner to update;
+: Retrieve partner details;
+: Modify partner information;
+if (Details Modified?) then (yes)
+  : Validate updated details;
+  if (Details Valid?) then (yes)
+    : Update partner profile;
+    : Update partner database;
+    : Display success message;
+  else (no)
+    : Display error for invalid details;
+  endif
+else (no)
+  : Inform user no changes made;
+endif
+stop
+@enduml

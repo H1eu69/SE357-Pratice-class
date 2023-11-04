@@ -1,0 +1,15 @@
+@startuml
+start
+: Select partner to remove product;
+: Retrieve partner details;
+: Select product to remove;
+: Validate product removal;
+if (Product Valid?) then (yes)
+  : Remove product from partner's inventory;
+  : Update partner's product database;
+  : Display success message;
+else (no)
+  : Display error for invalid product;
+endif
+stop
+@enduml
