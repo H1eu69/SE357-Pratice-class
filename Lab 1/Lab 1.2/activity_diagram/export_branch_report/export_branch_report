@@ -1,0 +1,13 @@
+@startuml
+skinparam monochrome true
+
+start
+:Select branch;
+:Select month;
+:Request Branch Report Export;
+:Gather Report Data;
+:Select Report File Type;
+:Generate Report;
+:Export Report;
+stop
+@enduml

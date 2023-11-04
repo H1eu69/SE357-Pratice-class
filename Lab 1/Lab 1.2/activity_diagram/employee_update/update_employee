@@ -1,0 +1,13 @@
+@startuml
+start
+:Request to Update Employee Information;
+:Retrieve Employee Details;
+:Modify Information;
+:Validate Updated Data;
+if (Data is Valid?) then (Yes)
+  :Update Employee Record;
+else (No)
+  :Show Error Message;
+endif
+stop
+@enduml
