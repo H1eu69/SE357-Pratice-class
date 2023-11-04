@@ -1,0 +1,8 @@
+@startuml
+start
+: Select partner to view stock history;
+: Retrieve partner details;
+: Access stock history records;
+: Display stock history to user;
+stop
+@enduml
