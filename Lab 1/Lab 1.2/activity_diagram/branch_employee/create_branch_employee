@@ -1,0 +1,13 @@
+@startuml
+start
+: Select branch to add employee;
+: Select an employee from the list;
+: Validate employee details;
+if (Details Valid?) then (yes)
+  : Assign selected employee to branch;
+  : Display success message;
+else (no)
+  : Display error for invalid details;
+endif
+stop
+@enduml
