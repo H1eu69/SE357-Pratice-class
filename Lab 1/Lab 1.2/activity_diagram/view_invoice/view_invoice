@@ -1,0 +1,14 @@
+@startuml
+|User|
+start
+: Click on Manage Invoice tab;
+|System|
+: Retrieve invoice history information;
+: Display Manage invoice screen;
+|User|
+: Click on specific invoice;
+|System|
+: Retrieve details information for selected invoice;
+: Display details information;
+stop
+@enduml

@@ -11,3 +11,16 @@ start
 :Export Report;
 stop
 @enduml
+
+@startuml
+|User|
+start
+: Click on Export button;
+|System|
+: Display Export options;
+|User|
+: Choose one of options;
+|System|
+: Export the statistic as the selected option;
+stop
+@enduml

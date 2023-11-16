@@ -1,0 +1,14 @@
+@startuml
+|User|
+start
+: Click on Manage account tab;
+|System|
+: Retrieve Employee account data;
+: Display Manage account screen;
+|User|
+: Click on specific account;
+|System|
+: Retrieve details data;
+: Display details screen;
+stop
+@enduml

@@ -11,3 +11,23 @@ else (No)
 endif
 stop
 @enduml
+
+
+@startuml
+|User|
+start
+: Click on Create Branch button;
+|System|
+: Display form to create new Branch;
+|User|
+: Input Branch Information;
+: Click on Confirm button;
+|System|
+: Validate Branch Information;
+if (Information Valid?) then (Yes)
+  : Add branch information to database;
+  : Update Manage Branch screen;
+else (No)
+endif
+stop
+@enduml

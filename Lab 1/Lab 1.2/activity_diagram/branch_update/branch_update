@@ -11,3 +11,22 @@ else (No)
 endif
 stop
 @enduml
+
+@startuml
+|User|
+start
+: Click on Update button;
+|System|
+: Display form to update Branch;
+|User|
+: Input new branch information;
+: Click on Confirm button;
+|System|
+: Validate new information;
+if (Information Valid?) then (Yes)
+  : Update Branch Information;
+  : Update Manage Branch screen;
+else (No)
+endif
+stop
+@enduml

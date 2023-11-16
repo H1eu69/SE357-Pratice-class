@@ -1,0 +1,14 @@
+@startuml
+|User|
+start
+: Click on View history button;
+|System|
+: Retrieve product receiving history data;
+: Display History screen;
+|User|
+: Choose specific product receiving bill;
+|System|
+: Retrieve details information;
+: Display details screen;
+stop
+@enduml

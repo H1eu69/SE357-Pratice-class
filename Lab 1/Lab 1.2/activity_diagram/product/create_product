@@ -15,3 +15,21 @@ else (no)
 endif
 stop
 @enduml
+
+@startuml
+|User|
+start
+: Click on Add button in Product Management tab;
+|System|
+: Display form to create new Product;
+|User|
+: Fill information;
+: Click Add button;
+|System|
+: Valid product infomation;
+if(Data valid?) then (Yes)
+  : Create Product;
+else (No)
+end if
+stop
+@enduml

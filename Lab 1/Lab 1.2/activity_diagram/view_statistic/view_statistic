@@ -1,0 +1,12 @@
+@startuml
+|User|
+start
+: Click View Statistic tab;
+|System|
+: Display View Statistic page;
+|User|
+: Choose filter functions;
+|System|
+: Filter and display data;
+stop
+@enduml

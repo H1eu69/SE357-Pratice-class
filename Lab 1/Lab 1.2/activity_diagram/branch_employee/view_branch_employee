@@ -1,0 +1,13 @@
+@startuml
+|User|
+start
+: Click on Employee button;
+|System|
+: Retrieve employee data of branch;
+: Display branch's employee screen;
+|User|
+: Choose filter function;
+|System|
+: Filter and display data;
+stop
+@enduml

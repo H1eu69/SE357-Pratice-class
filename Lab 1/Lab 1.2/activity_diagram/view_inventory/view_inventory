@@ -1,0 +1,17 @@
+@startuml
+|User|
+start
+: Click Inventory Management tab;
+|System|
+: Retrieve inventory data;
+: Display data;
+|User|
+repeat
+: Search or Filter data;
+|System|
+: Perform search or filter function;
+: Update screen with new data;
+|User|
+repeat while(other action?)
+stop
+@enduml
