@@ -7,12 +7,11 @@ actor "Quản lý" as manager
 
 employee <|- manager
 
-usecase "Đăng nhập" as login
-
 rectangle "Hệ thống" as SystemFeatures {
   usecase "Quản lý sản phẩm" as manageProducts
   usecase "Quản lý đơn hàng" as manageOrders
   usecase "Quản lý kho" as manageWarehouse
+  usecase "Quản lý kho" as adminManageWarehouse
   usecase "Thống kê chi nhánh" as statistic
 
   usecase "Thống kê, báo cáo" as adminStatistic
@@ -56,8 +55,6 @@ rectangle "Hệ thống" as SystemFeatures {
   note bottom of adminStatistic: Thống kê về chi nhánh/Sản phẩm/Nhân viên/\nLợi nhuận/Xem và xuất báo cáo
 }
 
-SystemFeatures ..> login: <<include>>
-
 employee --> manageProducts
 employee --> manageOrders
 employee --> manageWarehouse
@@ -67,6 +64,7 @@ manager --> adminStatistic
 manager --> manageStaffs
 manager --> manageBranches
 manager --> managePartner
+manager --> adminManageWarehouse 
 
 manageProducts ..> productDetails: <<extends>>
 manageProducts ..> editProductInfo: <<extends>>
@@ -74,8 +72,8 @@ manageProducts ..> editProductInfo: <<extends>>
 manageOrders ..> createOrder: <<extends>>
 manageOrders ..> orderDetails: <<extends>>
 
-manageWarehouse ...> warehouseDetails: <<extends>>
-manageWarehouse ...> stockIn: <<extends>>
+manageWarehouse ..> warehouseDetails: <<extends>>
+adminManageWarehouse ..> stockIn: <<extends>>
 
 statistic ..> viewStatistic: <<extends>>
 statistic ..> exportReport: <<extends>>
