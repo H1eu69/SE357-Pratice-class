@@ -2,64 +2,76 @@
 skinparam actorStyle awesome
 left to right direction
 
-actor "Nhân viên" as employee
-actor "Quản lý" as manager
+actor "Employee" as employee
+actor "Manager" as manager
+actor "System" as system
+
 
 employee <|- manager
 
-rectangle "Hệ thống" as SystemFeatures {
-  usecase "Quản lý sản phẩm" as manageProducts
-  usecase "Quản lý đơn hàng" as manageOrders
-  usecase "Quản lý kho" as manageWarehouse
-  usecase "Quản lý kho" as adminManageWarehouse
-  usecase "Thống kê chi nhánh" as statistic
+rectangle "System" as SystemFeatures {
+  usecase "Login" as login
+  usecase "Reset Password" as resetPass
 
-  usecase "Thống kê, báo cáo" as adminStatistic
-  usecase "Quản lý nhân sự" as manageStaffs
-  usecase "Quản lý chi nhánh" as manageBranches
-  usecase "Quản lý đối tác" as managePartner
+  usecase "Product Management" as manageProducts
+  usecase "Product Management" as adManageProducts
+  usecase "Order Management" as manageOrders
+  usecase "Warehouse Management" as manageWarehouse
+  usecase "Warehouse Management" as adminManageWarehouse
 
-  usecase "Chi tiết sản phẩm" as productDetails
-  usecase "Chỉnh sửa thông\ntin sản phẩm" as editProductInfo
+  usecase "Statistics, Reporting" as adminStatistic
+  usecase "HR Management" as manageStaffs
+  usecase "Branch Management" as manageBranches
+  usecase "Supplier Management" as managePartner
 
-  usecase "Tạo đơn hàng" as createOrder
-  usecase "Xem chi tiết đơn" as orderDetails
+  usecase "Product Details" as productDetails
+  usecase "Edit Information" as editProductInfo
+  usecase "Create Product" as createProduct
 
-  usecase "Xem thông tin kho" as warehouseDetails
-  usecase "Nhập hàng" as stockIn
+  usecase "Create Order" as createOrder
+  usecase "View Details" as orderDetails
 
-  usecase "Xem doanh thu\nngày/tuần/tháng" as viewStatistic
-  usecase "Xuất báo cáo" as exportReport
+  usecase "View Information" as warehouseDetails
+  usecase "Import Goods" as stockIn
+  usecase "Import Goods History" as stockInHistory
 
-  usecase "Xem thông tin nhân viên" as staffDetails
-  usecase "Chỉnh sửa thông tin" as editStaffProfile
-  usecase "Quản lý tài khoản\nnhân viên" as manageStaffAccount
-  usecase "Tạo tài khoản" as createStaffAccount
-  usecase "Vô hiệu hóa tài khoản" as dismissStaffAccount
+  usecase "View Information" as staffDetails
+  usecase "Edit Information" as editStaffProfile
+  usecase "Employee Account" as manageStaffAccount
+  usecase "Create Account" as createStaffAccount
+  usecase "Deactivate Account" as dismissStaffAccount
+  usecase "Activate Account" as enableStaffAccount
 
-  usecase "Chỉnh sửa thông tin" as updateBranches
-  usecase "Tạo mới/Dừng hoạt động" as cre_delBranches
-  usecase "Danh sách nhân viên" as staffInBranch
-  usecase "Thêm nhân viên" as addStaffInBranch
-  usecase "Xóa nhân viên" as delStaffInBranch
+  usecase "Edit Information" as updateBranches
+  usecase "Deactivate/Activate" as cre_delBranches
+  usecase "Create Branch" as createBranches
+  usecase "Employee List" as staffInBranch
+  usecase "Add Employee" as addStaffInBranch
+  usecase "Delete Employee" as delStaffInBranch
 
-  usecase "Thêm đối tác" as addPartner
-  usecase "Dừng làm việc" as dismissPartner
-  usecase "Danh sách sản phẩm" as partnerProducts
-  usecase "Thêm sản phẩm" as addPartnerProducts
-  usecase "Dừng cung cấp" as delPartnerProducts
-  usecase "Lịch sử nhập hàng" as stockInHistory
+  usecase "Add Supplier" as addPartner
+  usecase "Activate/Deactivate" as dismissPartner
+  usecase "Product List" as partnerProducts
 
-  note bottom of warehouseDetails: Số lượng hàng tồn/\nSản phẩm sắp hết/Hàng ế
-  note bottom of viewStatistic: Lợi nhuận/Số lượng sản phẩm/\nSản phẩm bán chạy
+  usecase "Send Notification" as sendNoti
+  usecase "Inventory Changed Notification" as invenNoti
+  usecase "Shiftwork Changed Notification" as shiftworkNoti
+
+  note bottom of warehouseDetails: Hàng tồn/Sản phẩm sắp hết\ncủa chi nhánh đang làm
   note bottom of adminStatistic: Thống kê về chi nhánh/Sản phẩm/Nhân viên/\nLợi nhuận/Xem và xuất báo cáo
+  note bottom of orderDetails: Nhân viên chỉ xem được danh\nsách đơn của chi nhánh đang làm
 }
+system --> sendNoti
+sendNoti ..> invenNoti: <<extends>>
+sendNoti ..> shiftworkNoti: <<extends>>
 
 employee --> manageProducts
 employee --> manageOrders
 employee --> manageWarehouse
-employee --> statistic
+employee --> login
+employee --> resetPass
 
+manager --> adManageProducts
 manager --> adminStatistic
 manager --> manageStaffs
 manager --> manageBranches
@@ -67,34 +79,33 @@ manager --> managePartner
 manager --> adminManageWarehouse 
 
 manageProducts ..> productDetails: <<extends>>
-manageProducts ..> editProductInfo: <<extends>>
+
+adManageProducts ..> editProductInfo: <<extends>>
+adManageProducts ..> createProduct: <<extends>>
 
 manageOrders ..> createOrder: <<extends>>
 manageOrders ..> orderDetails: <<extends>>
 
 manageWarehouse ..> warehouseDetails: <<extends>>
 adminManageWarehouse ..> stockIn: <<extends>>
-
-statistic ..> viewStatistic: <<extends>>
-statistic ..> exportReport: <<extends>>
+adminManageWarehouse ..> stockInHistory: <<extends>>
 
 manageStaffs ..> staffDetails: <<extends>>
 manageStaffs ..> editStaffProfile: <<extends>>
 manageStaffs ..> manageStaffAccount: <<extends>>
 manageStaffAccount ..> createStaffAccount: <<extends>>
 manageStaffAccount ..> dismissStaffAccount: <<extends>>
+manageStaffAccount ..> enableStaffAccount: <<extends>>
 
 manageBranches ..> updateBranches: <<extends>>
 manageBranches ..> cre_delBranches: <<extends>>
 manageBranches ..> staffInBranch: <<extends>>
+manageBranches ..> createBranches: <<extends>>
 staffInBranch ..> addStaffInBranch: <<extends>>
 staffInBranch ..> delStaffInBranch: <<extends>>
 
 managePartner ..> addPartner: <<extends>>
 managePartner ..> dismissPartner: <<extends>>
 managePartner ..> partnerProducts: <<extends>>
-managePartner ..> stockInHistory: <<extends>>
-partnerProducts ..> addPartnerProducts: <<extends>>
-partnerProducts ..> delPartnerProducts: <<extends>>
 
 @enduml
