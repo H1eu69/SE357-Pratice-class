@@ -1,0 +1,30 @@
+@startuml
+actor User
+control "Control" as C
+participant "Server" as S
+database Database
+
+activate User
+User -> C: (1) Requests to view orders history
+activate C
+C -> S: (2) getAllOrder
+activate S
+S -> Database: (3) getAllOrder
+activate Database
+Database --> S: (4) allOrderData
+deactivate Database
+S --> C: (5) allOrderData
+deactivate S
+C --> User: (6) showAllOrder
+User -> C: (7) Request to view specific order details
+C -> S: (8) getOrderDetails
+activate S
+S -> Database: (9) getOrderDetails
+activate Database
+Database --> S: (10) orderDetailsData
+deactivate Database
+S --> C: (11) orderDetailsData
+deactivate S
+C --> User: (12) showOrderDetails
+deactivate C
+@enduml

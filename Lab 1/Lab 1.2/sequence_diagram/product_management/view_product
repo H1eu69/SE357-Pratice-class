@@ -1,0 +1,20 @@
+@startuml
+actor User
+control "Control" as C
+participant "Server" as S
+database Database
+
+activate User
+User -> C: (1) Requests to read a product
+activate C
+C -> S: (2) getProductInformation
+activate S
+S -> Database: (3) getProductInformation
+activate Database
+Database --> S: (4) sendProductData
+deactivate Database
+S --> C: (5) sendProductData
+deactivate S
+C --> User: (6) showProductDetails
+deactivate C
+@enduml

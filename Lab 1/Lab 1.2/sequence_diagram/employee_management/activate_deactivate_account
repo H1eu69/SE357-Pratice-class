@@ -1,0 +1,20 @@
+@startuml
+actor User
+control "Control" as C
+participant "Server" as S
+database Database
+
+activate User
+User -> C: (1) Update employee account status
+activate C
+C -> S: (2) updateAccountStatus
+activate S
+S -> Database: (3) changeAccountStatus
+activate Database
+Database --> S: (4) sendSuccessMessage
+deactivate Database
+S --> C: (5) sendSuccessMessage
+deactivate S
+C --> User: (6) showSuccessMessage
+deactivate C
+@enduml

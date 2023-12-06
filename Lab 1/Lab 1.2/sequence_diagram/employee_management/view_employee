@@ -1,0 +1,32 @@
+@startuml
+actor User
+control "Control" as C
+participant "Server" as S
+database Database
+
+activate User
+User -> C: (1) Requests to read all employee
+activate C 
+C -> S: (2) getAllEmployeeInformation
+activate S
+S -> Database: (3) getAllEmployeeInformation
+activate Database
+Database --> S: (4) allEmployeeData
+deactivate Database
+S --> C: (5) sendAllEmployeeInformation
+deactivate S
+C --> User: (6) showAllEmployeeInformation
+deactivate C
+User -> C: (7) Requests to see specific employee details
+activate C
+C -> S: (8) getEmployeeDetails
+activate S
+S -> Database: (9) getEmployeeDetails
+activate Database
+Database --> S: (10) employeeDetailsData
+deactivate Database
+S --> C: (11) employeeDetailsData
+deactivate S
+C --> User: (12) showEmployeeDetails
+deactivate C
+@enduml

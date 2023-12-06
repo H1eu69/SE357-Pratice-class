@@ -1,0 +1,30 @@
+@startuml
+actor User
+control "Control" as C
+participant "Server" as S
+database Database
+
+activate User
+User -> C: (1) Requests to view supplier
+activate C
+C -> S: (2) getAllSupplier
+activate S
+S -> Database: (3) getAllSupplier
+activate Database
+Database --> S: (4) allSupplierData
+deactivate Database
+S --> C: (5) allSupplierData
+deactivate S
+C --> User: (6) showAllSupplier
+User -> C: (7) Requests to view specific supplier details
+C -> S: (8) getSupplierDetails
+activate S
+S -> Database: (9) getSupplierDetails
+activate Database
+Database --> S: (10) supplierDetailsData
+deactivate Database
+S --> C: (11) supplierDetailsData
+deactivate S
+C --> User: (12) showSupplierDetails
+deactivate C
+@enduml

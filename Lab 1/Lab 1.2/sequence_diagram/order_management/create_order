@@ -1,0 +1,25 @@
+@startuml
+actor User
+control "Control" as C
+participant "Server" as S
+database Database
+
+activate User
+User -> C: (1) Starts order process
+activate C
+loop Selects items
+    User -> C: Selects an item
+    C --> User: Displays selected item
+end
+User -> C: (2) Proceeds to checkout
+C -> S: (3) createOrder
+activate S
+S -> Database: (4) createOrder
+activate Database
+Database --> S: (5) sendSuccessMessage
+deactivate Database
+S --> C: (6) sendSuccessMessage
+deactivate S
+C --> User: (7) showSuccessMessage
+deactivate C
+@enduml

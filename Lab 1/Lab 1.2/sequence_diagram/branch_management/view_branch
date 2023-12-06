@@ -1,0 +1,30 @@
+@startuml
+actor User
+control "Control" as C
+participant "Server" as S
+database Database
+
+activate User
+User -> C: (1) Requests to view branch information
+activate C
+C -> S: (2) getAllBranchData
+activate S
+S -> Database: (3) getAllBranchData
+activate Database
+Database --> S: (4) allBranchData
+deactivate Database
+S --> C: (5) allBranchData
+deactivate S
+C --> User: (6) showAllBranch
+User -> C: (7) Requests to view specific branch details
+C -> S: (8) getBranchDetails
+activate S
+S -> Database: (9) getBranchDetails
+activate Database
+Database --> S: (10) branchDetailsData
+deactivate Database
+S --> C: (11) branchDetailsData
+deactivate S
+C --> User: (12) showBranchDetails
+deactivate C
+@enduml
