@@ -12,16 +12,16 @@ loop Selects product
     User -> C: Selects an item and enter quantity
     C --> User: Displays selected item
 end
-C -> S: (3) importGood
+C -> S: (3) importGood(items)
 activate S
-S -> Database: (4) saveImportGoodInformation
+S -> Database: (4) saveImportGoodInformation(items)
 activate Database
-Database --> S: (5) saveSuccessMessage
+Database --> S: (5) saveSuccessMessage(message)
 deactivate Database
-S -> S: (6) sendNotificationToWarehouseManager
-S --> C: (7) sendSuccessMessage
+S -> S: (6) sendNotificationToWarehouseManager()
+S --> C: (7) sendSuccessMessage(message)
 deactivate S
-C -> C: (8) generateWarehouseReceipt
-C --> User: (9) showWarehouseReceipt
+C -> C: (8) generateWarehouseReceipt(items)
+C --> User: (9) showWarehouseReceipt(warehouseReceipt)
 deactivate C
 @enduml

@@ -5,16 +5,28 @@ participant "Server" as S
 database Database
 
 activate User
-User -> C: (1) Requests to read a product
+User -> C: (1) Requests to read all product
 activate C
-C -> S: (2) getProductInformation
+C -> S: (2) getAllProductInformation()
 activate S
-S -> Database: (3) getProductInformation
+S -> Database: (3) getProductInformation()
 activate Database
-Database --> S: (4) sendProductData
+Database --> S: (4) allProductData(data)
 deactivate Database
-S --> C: (5) sendProductData
+S --> C: (5) sendProductData(data)
 deactivate S
-C --> User: (6) showProductDetails
+C --> User: (6) showAllProductInformation(data)
+deactivate C
+User -> C: (7) Requests to see specific product details
+activate C
+C -> S: (8) getProductDetails(productId)
+activate S
+S -> Database: (9) getProductDetails(productId)
+activate Database
+Database --> S: (10) productDetailsData(productData)
+deactivate Database
+S --> C: (11) productDetailsData(productData)
+deactivate S
+C --> User: (12) showProductDetails(productData)
 deactivate C
 @enduml

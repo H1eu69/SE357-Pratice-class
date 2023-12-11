@@ -1,0 +1,10 @@
+@startuml
+|User|
+start
+: Update shift work of employee;
+|System|
+: Update shift work of employee;
+: Create notitifcation to employee;
+: Send notification to employee;
+stop
+@enduml

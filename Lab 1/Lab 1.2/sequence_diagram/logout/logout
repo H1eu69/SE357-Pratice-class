@@ -7,14 +7,14 @@ database Database
 activate User
 User -> C: (1) Requests sign-out
 activate C
-C -> S: (2) logout
+C -> S: (2) logout(credentials)
 activate S
-S -> Database: (3) logoutAccount
+S -> Database: (3) logoutAccount(credentials)
 activate Database
-Database --> S: (4) accountStatus
+Database --> S: (4) accountStatus()
 deactivate Database
-S --> C: (5) sendSuccessMessage
+S --> C: (5) sendSuccessMessage(message)
 deactivate S
-C --> User: (6) showLoginScreen
+C --> User: (6) showLoginScreen(message)
 deactivate C
 @enduml

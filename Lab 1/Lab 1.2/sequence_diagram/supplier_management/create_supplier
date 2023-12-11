@@ -9,29 +9,29 @@ User -> C: (1) Requests to create supplier
 activate C
 C --> User: (2) Display form to create supplier
 User -> C: (3) Input supplier information
-C -> C: (4) isSupplierDataValid
+C -> C: (4) isSupplierDataValid(data)
 alt true
-    C -> S: (5) createSupplier
+    C -> S: (5) createSupplier(data)
     activate S
-    S -> Database: (6) checkSupplierExists
+    S -> Database: (6) checkSupplierExists(data)
     activate Database
-    Database --> S: (7) existsStatus
+    Database --> S: (7) existsStatus()
     deactivate Database
-    S -> S: (8) isSupplierAlreadyExists
+    S -> S: (8) isSupplierAlreadyExists(existsStatus)
     alt true
-        S --> C: (9) sendSupplierAlreadyExistsMessage
-        C --> User: (10) showSupplierAlreadyExistsMessage
+        S --> C: (9) sendSupplierAlreadyExistsMessage(error)
+        C --> User: (10) showSupplierAlreadyExistsMessage(error)
     else false
-        S -> Database: (11) createSupplier
+        S -> Database: (11) createSupplier(data)
         activate Database
-        Database --> S: (12) sendSuccessMessage
+        Database --> S: (12) sendSuccessMessage(message)
         deactivate Database
-        S --> C: (12) sendSucessMessage
+        S --> C: (12) sendSucessMessage(message)
         deactivate S
-        C --> User: (13) showSuccessMessage
+        C --> User: (13) showSuccessMessage(message)
     end
 else false
-    C --> User: (14) showFailureMessage
+    C --> User: (14) showFailureMessage(error)
     deactivate C
 end
 deactivate C

@@ -1,9 +1,0 @@
-@startuml
-start
-: Gather partner details;
-: Validate partner details;
-if (Details Valid?) then (yes)
-  : Create partner profile;
-  : Update partner database;
-  : Display success message;
-else (no)

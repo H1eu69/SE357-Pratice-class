@@ -12,14 +12,14 @@ loop Selects items
     C --> User: Displays selected item
 end
 User -> C: (2) Proceeds to checkout
-C -> S: (3) createOrder
+C -> S: (3) createOrder(items)
 activate S
-S -> Database: (4) createOrder
+S -> Database: (4) createOrder(items)
 activate Database
-Database --> S: (5) sendSuccessMessage
+Database --> S: (5) sendSuccessMessage(message)
 deactivate Database
-S --> C: (6) sendSuccessMessage
+S --> C: (6) sendSuccessMessage(message)
 deactivate S
-C --> User: (7) showSuccessMessage
+C --> User: (7) showSuccessMessage(message)
 deactivate C
 @enduml

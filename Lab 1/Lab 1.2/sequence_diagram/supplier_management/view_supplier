@@ -7,24 +7,24 @@ database Database
 activate User
 User -> C: (1) Requests to view supplier
 activate C
-C -> S: (2) getAllSupplier
+C -> S: (2) getAllSupplier()
 activate S
-S -> Database: (3) getAllSupplier
+S -> Database: (3) getAllSupplier()
 activate Database
-Database --> S: (4) allSupplierData
+Database --> S: (4) allSupplierData(data)
 deactivate Database
-S --> C: (5) allSupplierData
+S --> C: (5) allSupplierData(data)
 deactivate S
-C --> User: (6) showAllSupplier
+C --> User: (6) showAllSupplier(data)
 User -> C: (7) Requests to view specific supplier details
-C -> S: (8) getSupplierDetails
+C -> S: (8) getSupplierDetails(supplierId)
 activate S
-S -> Database: (9) getSupplierDetails
+S -> Database: (9) getSupplierDetails(supplierId)
 activate Database
-Database --> S: (10) supplierDetailsData
+Database --> S: (10) supplierDetailsData(supplierData)
 deactivate Database
-S --> C: (11) supplierDetailsData
+S --> C: (11) supplierDetailsData(supplierData)
 deactivate S
-C --> User: (12) showSupplierDetails
+C --> User: (12) showSupplierDetails(supplierData)
 deactivate C
 @enduml

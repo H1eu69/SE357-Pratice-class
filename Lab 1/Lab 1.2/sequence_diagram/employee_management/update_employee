@@ -9,19 +9,19 @@ User -> C: (1) Requests to update an employee
 activate C 
 C --> User: (2) Display form to update employee infomation
 User -> C: (3) Input employee data
-C -> C: (4) isValidData
+C -> C: (4) isValidData(data)
 alt true
-    C -> S: (5) updateEmployeeInformation
+    C -> S: (5) updateEmployeeInformation(employeeId, data)
     activate S
-    S -> Database: (6) updateEmployee
+    S -> Database: (6) updateEmployee(employeeId, data)
     activate Database
-    Database --> S: (7) sendUpdateSuccessMessage
+    Database --> S: (7) sendUpdateSuccessMessage(message)
     deactivate Database
-    S --> C: (8) sendSuccessMessage
+    S --> C: (8) sendSuccessMessage(message)
     deactivate S
-    C --> User: (9) showSuccessMessage
+    C --> User: (9) showSuccessMessage(message)
 else false
-    C --> User: (10) showFailureMessage
+    C --> User: (10) showFailureMessage(error)
     deactivate C
 end
 @enduml

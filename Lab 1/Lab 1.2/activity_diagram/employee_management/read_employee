@@ -1,0 +1,14 @@
+@startuml
+|User|
+start
+: Click on Manage Employee tab;
+|System|
+: Retrieve all Employee data;
+: Display Manage Employee screen;
+|User|
+: Choose specific employee;
+|System|
+: Retrieve selected employee details;
+: Display Employee Details screen;
+stop
+@enduml

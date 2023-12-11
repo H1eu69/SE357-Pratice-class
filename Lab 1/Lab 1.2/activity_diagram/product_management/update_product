@@ -1,0 +1,28 @@
+@startuml
+|User|
+start
+: Select product to update;
+|System|
+: Retrieve product details;
+|User|
+: Modify product information;
+: Click Update button;
+|System|
+if (Details Modified?) then (yes)
+  : Validate updated details;
+  if (Details Valid?) then (yes)
+    : Update product in system;
+    if (Images Modified?) then (yes)
+      : Upload modified images;
+      : Update product database;
+    else (no)
+      : Update product database;
+    endif
+  else (no)
+    : Display error for invalid details;
+  endif
+else (no)
+  : Inform user no changes made;
+endif
+stop
+@enduml

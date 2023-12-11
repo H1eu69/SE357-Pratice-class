@@ -1,20 +1,12 @@
 @startuml
-skinparam monochrome true
-
-start
-:Select branch;
-:Select month;
-:Request Branch Report Export;
-:Gather Report Data;
-:Select Report File Type;
-:Generate Report;
-:Export Report;
-stop
-@enduml
-
-@startuml
 |User|
 start
+: Select branch to view report;
+|System|
+: Compute data;
+: Generate report;
+: Display report information;
+|User|
 : Click on Export button;
 |System|
 : Display Export options;

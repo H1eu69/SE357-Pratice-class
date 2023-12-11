@@ -1,0 +1,28 @@
+@startuml
+|User|
+start
+: Click on Export good button in\nInventory Management screen;
+|System|
+: Display Export good form;
+|User|
+repeat: Select Product;
+: Enter quantity;
+repeat while(More product?) is (yes) not (no)
+: Click Confirm button;
+|System|
+: Check good quantity;
+if(Enough?) then (Yes)
+  : Save export information to database;
+  : Generate good delivery note;
+  : Display good delivery note;
+  |User|
+  if(Choose export good delivery note?) then (Yes)
+    |System|
+    : Export good delivery note;
+  else (No)
+  end if
+else (No)
+  : Show failure message;
+end if
+stop
+@enduml

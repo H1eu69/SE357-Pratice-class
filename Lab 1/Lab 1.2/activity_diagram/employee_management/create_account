@@ -1,0 +1,16 @@
+@startuml
+|User|
+start
+:Click on Create Account button;
+|System|
+:Display form to create Employee's Account;
+|User|
+repeat: Fill needed information;
+:Click Create button;
+|System|
+:Validate information;
+backward: Show error message;
+repeat while (is data valid?) is (no) not (yes)
+:Create Employee Account;
+stop
+@enduml

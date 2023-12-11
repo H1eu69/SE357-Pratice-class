@@ -7,16 +7,16 @@ database Database
 activate User
 User -> C: (1) Request to view branch report
 activate C
-C -> S: (2) getBranchStatistic
+C -> S: (2) getBranchStatistic(branchId)
 activate S
-S -> Database: (3) getBranchData
+S -> Database: (3) getBranchData(branchId)
 activate Database
-Database --> S: (4) branchNeededData
+Database --> S: (4) branchNeededData(branchId)
 deactivate Database
-S -> S: (5) computeData
-S -> S: (6) generaReport
-S --> C: (7) sendReport
+S -> S: (5) computeData(data)
+S -> S: (6) generaReport(computedData)
+S --> C: (7) sendReport(report)
 deactivate S
-C --> User: (8) showBranchReport
+C --> User: (8) showBranchReport(report)
 deactivate C
 @enduml

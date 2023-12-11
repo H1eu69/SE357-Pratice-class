@@ -1,0 +1,24 @@
+@startuml
+|User|
+start
+: Click on Import good button in\nInventory Management screen;
+|System|
+: Display Import good form;
+|User|
+repeat: Select Product;
+: Enter quantity;
+repeat while(More product?) is (yes) not (no)
+: Click Confirm button;
+|System|
+: Save import information to database;
+: Send notification to inventory manager;
+: Generate warehouse receipt;
+: Display warehouse receipt;
+|User|
+if(Choose export warehouse receipt?) then (Yes)
+  |System|
+  : Export warehouse receipt;
+else (No)
+end if
+stop
+@enduml

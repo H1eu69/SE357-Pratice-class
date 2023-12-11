@@ -1,0 +1,16 @@
+@startuml
+|User|
+start
+: Click on Add button in Product Management tab;
+|System|
+: Display form to create new Product;
+|User|
+repeat: Fill information;
+  : Click Add button;
+|System|
+: Valid product infomation;
+backward: Show error message;
+repeat while (Data valid?) is (no) not (yes)
+: Create Product;
+stop
+@enduml

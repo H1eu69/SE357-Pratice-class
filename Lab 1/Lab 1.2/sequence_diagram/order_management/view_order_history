@@ -7,24 +7,24 @@ database Database
 activate User
 User -> C: (1) Requests to view orders history
 activate C
-C -> S: (2) getAllOrder
+C -> S: (2) getAllOrder()
 activate S
-S -> Database: (3) getAllOrder
+S -> Database: (3) getAllOrder()
 activate Database
-Database --> S: (4) allOrderData
+Database --> S: (4) allOrderData(data)
 deactivate Database
-S --> C: (5) allOrderData
+S --> C: (5) allOrderData(data)
 deactivate S
-C --> User: (6) showAllOrder
+C --> User: (6) showAllOrder(data)
 User -> C: (7) Request to view specific order details
-C -> S: (8) getOrderDetails
+C -> S: (8) getOrderDetails(orderId)
 activate S
-S -> Database: (9) getOrderDetails
+S -> Database: (9) getOrderDetails(orderId)
 activate Database
-Database --> S: (10) orderDetailsData
+Database --> S: (10) orderDetailsData(orderData)
 deactivate Database
-S --> C: (11) orderDetailsData
+S --> C: (11) orderDetailsData(orderData)
 deactivate S
-C --> User: (12) showOrderDetails
+C --> User: (12) showOrderDetails(orderData)
 deactivate C
 @enduml
