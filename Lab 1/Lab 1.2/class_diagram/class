@@ -11,6 +11,7 @@ class Account {
   int status
 
   void UpdateStatus()
+  void UpdatePassword()
 }
 
 class User {
@@ -38,13 +39,14 @@ class Product {
   String productName
   String description
   File image
+  byte code
   int price
   int numberInStock
   ProductType type
   int totalSold
 
   void UpdateInfo()
-  void Sold()
+  void UpdateQuantity()
 }
 
 class ProductType {
@@ -75,6 +77,7 @@ class Branch {
   int status
 
   void UpdateBranch()
+  void UpdateStatus()
 }
 
 class Partner {
@@ -85,13 +88,12 @@ class Partner {
   String email
   Map<productId, int> supplyStatus
 
-  void UpdateSupplyStatus(String productId)
-  void AddNewProduct(String productId)
+  void UpdateStatus()
+  void UpdateInfortion()
 }
 
 class SupplierInvoice {
   String id
-  String partnerId
   Date date
   int totalPrice
   int status
