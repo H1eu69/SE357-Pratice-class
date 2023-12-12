@@ -1,22 +1,22 @@
 @startuml
 actor User
-participant "Client" as C
+control "Control" as C
 participant "Server" as S
 database Database
 
 activate User
-User -> C: Selects branch and month for report
+User -> C: (1) Request to view branch report
 activate C
-C --> User: Displays selected branch and month
-User -> C: Confirms branch and month selection
-C -> S: Sends export report request with branch and month details
+C -> S: (2) getBranchStatistic(branchId)
 activate S
-S -> Database: Gathers branch data for the selected month
+S -> Database: (3) getBranchData(branchId)
 activate Database
-Database --> S: Branch data for the selected month
+Database --> S: (4) branchNeededData(branchId)
 deactivate Database
-S -> S: Generate report
-S --> C: Sends the generated report
+S -> S: (5) computeData(data)
+S -> S: (6) generaReport(computedData)
+S --> C: (7) sendReport(report)
 deactivate S
+C --> User: (8) showBranchReport(report)
 deactivate C
 @enduml

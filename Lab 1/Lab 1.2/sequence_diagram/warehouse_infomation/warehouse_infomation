@@ -1,0 +1,33 @@
+@startuml
+actor User
+participant "Client" as C
+participant "Server" as S
+database Database
+
+activate User
+User -> C: (1) Requests to view warehouse details
+activate C
+C -> S: (2) getWarehouseDetails()
+activate S
+S -> Database: (3) getWarehouseDetails()
+activate Database
+Database --> S: (4) warehouseDetails(data)
+deactivate Database
+S --> C: (5) sendWarehouseDetails(data)
+deactivate S
+C --> User: (6) showWarehouseDetails(data)
+deactivate C
+
+User -> C: (7) Requests to view import/export good history
+activate C
+C -> S: (8) getHistory(isExport)
+activate S
+S -> Database: (9) getHistory(isExport)
+activate Database
+Database --> S: historyInformation(data)
+deactivate Database
+S --> C: sendHistoryInformation(data)
+deactivate S
+C --> User: showHistoryInformation(data)
+deactivate C
+@enduml

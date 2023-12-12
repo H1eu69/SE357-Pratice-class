@@ -1,0 +1,14 @@
+@startuml
+|User|
+start
+: Click on Manage Order tab;
+|System|
+: Retrieve order history information;
+: Display Manage order screen;
+|User|
+: Click on specific order;
+|System|
+: Retrieve details information for selected order;
+: Display details information;
+stop
+@enduml

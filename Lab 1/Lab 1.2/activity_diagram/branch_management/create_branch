@@ -1,0 +1,17 @@
+@startuml
+|User|
+start
+: Click on Create Branch button;
+|System|
+: Display form to create new Branch;
+|User|
+repeat : Input Branch Information;
+: Click on Confirm button;
+|System|
+: Validate Branch Information;
+backward: Show error message;
+repeat while (Information Valid?) is (no) not (yes)
+: Add branch information to database;
+: Update Manage Branch screen;
+stop
+@enduml

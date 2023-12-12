@@ -1,0 +1,27 @@
+@startuml
+actor User
+control "Control" as C
+participant "Server" as S
+database Database
+
+activate User
+User -> C: (1) Requests to update a product
+activate C
+C --> User: (2) Display form to update product
+User -> C: (3) Input new data
+C -> C: (4) isValidProductData(data)
+alt true
+    C -> S: (5) updateProduct(productId, data)
+    activate S
+    S -> Database: (6) updateProduct(productId, data)
+    activate Database
+    Database --> S: (7) sendUpdateSuccessMessage(message)
+    deactivate Database
+    S --> C: (8) sendUpdateSuccessMessage(message)
+    deactivate S
+    C --> User: (9) showUpdateSuccessMessage(message)
+else false
+    C --> User: (10) showUpdateFailureMessage(message)
+    deactivate C
+end
+@enduml

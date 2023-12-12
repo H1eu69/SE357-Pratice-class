@@ -1,0 +1,20 @@
+@startuml
+actor User
+control "Control" as C
+participant "Server" as S
+database Database
+
+activate User
+User -> C: (1) Requests to update branch status
+activate C
+C -> S: (2) updateBranchStatus(branchId, status)
+activate S
+S -> Database: (3) updateBranchStatus(branchId, status)
+activate Database
+Database --> S: (4) sendSuccessMessage(message)
+deactivate Database
+S --> C: (5) sendSuccessMessage(message)
+deactivate S
+C --> User: (6) showSuccessMessage(message)
+deactivate C
+@enduml

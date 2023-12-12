@@ -1,0 +1,28 @@
+@startuml
+actor User
+control "Control" as C
+participant "Server" as S
+database Database
+
+activate User
+User -> C: (1) Requests to update supplier
+activate C
+C --> User: (2) Display form to update supplier
+User -> C: (3) Input new supplier information
+C -> C: (4) isNewSupplierDataValid(data)
+alt true
+    C -> S: (5) updateSupplier(supplierId, data)
+    activate S
+    S -> Database: (6) updateSupplier(supplierId, data)
+    activate Database
+    Database --> S: (7) sendUpdateSuccessMessage(message)
+    deactivate Database
+    S --> C: (8) sendUpdateSuccessMessage(message)
+    deactivate S
+    C --> User: (9) showSuccessMessage(message)
+else false
+    C --> User: (10) showFailureMessage(error)
+    deactivate C
+end
+deactivate C
+@enduml

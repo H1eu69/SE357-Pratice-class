@@ -1,0 +1,14 @@
+@startuml
+|User|
+start
+: Click Inventory Management tab;
+|System|
+: Retrieve inventory data;
+: Display data;
+|User|
+: Click on Import/Export history;
+|System|
+: Retrieve history data;
+: Display Import/Export good history screen;
+stop
+@enduml

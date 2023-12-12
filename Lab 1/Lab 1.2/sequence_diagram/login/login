@@ -1,0 +1,31 @@
+@startuml
+actor User
+control "Control" as C
+participant "Server" as S
+database Database
+
+activate User
+User -> C: (1) Enters credentials
+activate C
+C -> C: (2) isCredentialValid(credentials)
+alt true
+    C -> S: (3) login(credentials)
+    activate S
+    S -> Database: (4) validAccount(credentials)
+    activate Database
+    Database --> S: (5) loginStatus()
+    deactivate Database
+    S -> S: (6) isValid(loginStatus)
+    alt true
+        S --> C: (7) sendSuccessMessage(message)
+        C --> User: (8) showDashboardScreen()
+    else false
+        S --> C: (9) sendFailureMessage(error)
+        deactivate S
+        C --> User: (10) showFailureMessage(error)
+    end
+else false
+    C --> User: (11) showFailureMessage(error)
+    deactivate C
+end
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+|User|
+start
+: Click on Manage account tab;
+|System|
+: Retrieve Employee account data;
+: Display Manage account screen;
+|User|
+: Click on specific account;
+|System|
+: Retrieve details data;
+: Display details screen;
+|User|
+: Click on Enable/Disable button;
+|System|
+: Update new status for account to database;
+stop
+@enduml

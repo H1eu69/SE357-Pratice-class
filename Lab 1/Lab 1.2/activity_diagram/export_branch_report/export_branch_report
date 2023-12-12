@@ -1,13 +1,18 @@
 @startuml
-skinparam monochrome true
-
+|User|
 start
-:Select branch;
-:Select month;
-:Request Branch Report Export;
-:Gather Report Data;
-:Select Report File Type;
-:Generate Report;
-:Export Report;
+: Select branch to view report;
+|System|
+: Compute data;
+: Generate report;
+: Display report information;
+|User|
+: Click on Export button;
+|System|
+: Display Export options;
+|User|
+: Choose one of options;
+|System|
+: Export the statistic as the selected option;
 stop
 @enduml

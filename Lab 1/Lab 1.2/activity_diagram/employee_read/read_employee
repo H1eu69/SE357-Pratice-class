@@ -1,7 +1,0 @@
-@startuml
-start
-:Request to View Employee Details;
-:Retrieve Employee Information;
-:Display Employee Details;
-stop
-@enduml

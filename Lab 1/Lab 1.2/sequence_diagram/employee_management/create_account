@@ -1,0 +1,35 @@
+@startuml
+actor User
+control "Control" as C
+participant "Server" as S
+database Database
+
+activate User
+User -> C: (1) Requests to create an employee
+activate C
+C --> User: (2) Display form to create employee
+User -> C: (3) Input employee data
+C -> C: (4) isValidEmployeeData(data)
+alt true
+    C -> S: (5) createNewEmployee(data)
+    activate S
+    S -> Database: (6) checkAccountExists(data)
+    activate Database
+    Database --> S: (7) existsStatus()
+    S -> S: (8) isUserNotExists(existsStatus())
+    alt true
+        S -> Database: (9) createNewEmployee(data)
+        Database --> S: (10) sendCreateSuccessMessage(message)
+        deactivate Database
+        S --> C: (11) sendCreateSuccessMessage(message)
+        C --> User: (12) showCreateSuccessMessage(message)
+    else false
+        S --> C: (13) sendUserAlreadyExistsMessage(error)
+        deactivate S
+        C --> User: (14) showUserAlreadyExistsMessage(error)
+    end
+else false
+    C --> User: (15) showFailureMessage(error)
+    deactivate C
+end
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+|User|
+start
+: Click on Manage Products tab;
+|System|
+: Retrieve products data;
+: Display Manage Products screens;
+|User|
+: Click Detail button on product item;
+|System|
+: Retrieve product detail information;
+: Display Product detail screen;
+stop
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+|User|
+start
+: Click on Update button;
+|System|
+: Display form to update Supplier information;
+|User|
+repeat: Fill needed information;
+: Click on Confirm button;
+|System|
+: Validate new information;
+backward: Show error message;
+repeat while (Information valid?) is (no) not (yes)
+: Update Supplier information to the database;
+: Update Supplier details screen;
+stop
+@enduml

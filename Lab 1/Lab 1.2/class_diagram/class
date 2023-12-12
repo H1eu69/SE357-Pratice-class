@@ -4,7 +4,10 @@ abstract class User
 class Account {
   String id
   String uid
+  String userName
+  String password
   Date dateCreated
+  int loginStatus
   int status
 
   void UpdateStatus()
@@ -26,6 +29,7 @@ class Manager {}
 
 class Employee {
   String branchId
+  Object shiftWork
 }
 
 class Product {
@@ -94,7 +98,7 @@ class SupplierInvoice {
   Map<String, int> products
 }
 
-User "1" *-- "0..1" Account : has
+User "1" *-- "1..1" Account
 
 User <|-- Manager
 User <|-- Employee
