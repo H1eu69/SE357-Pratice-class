@@ -7,26 +7,30 @@ database Database
 activate User
 User -> C: (1) Requests to read all employee
 activate C 
-C -> S: (2) getAllEmployeeInformation()
+C -> S: (2) getAllEmployee()
+deactivate C
 activate S
-S -> Database: (3) getAllEmployeeInformation()
+S -> Database: (3) getAllEmployee()
 activate Database
-Database --> S: (4) allEmployeeData(data)
+Database --> S: (4) allEmployee(data)
 deactivate Database
-S --> C: (5) sendAllEmployeeInformation(data)
+S --> C: (5) sendAllEmployee(data)
 deactivate S
-C --> User: (6) showAllEmployeeInformation(data)
+activate C
+C --> User: (6) showAllEmployee(data)
 deactivate C
 User -> C: (7) Requests to see specific employee details
 activate C
 C -> S: (8) getEmployeeDetails(employeeId)
+deactivate C
 activate S
 S -> Database: (9) getEmployeeDetails(employeeId)
 activate Database
-Database --> S: (10) employeeDetailsData(employeeData)
+Database --> S: (10) employeeDetails(data)
 deactivate Database
-S --> C: (11) employeeDetailsData(employeeData)
+S --> C: (11) employeeDetails(data)
 deactivate S
-C --> User: (12) showEmployeeDetails(employeeData)
+activate C
+C --> User: (12) showEmployeeDetails(data)
 deactivate C
 @enduml

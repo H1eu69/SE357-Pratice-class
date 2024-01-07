@@ -13,6 +13,24 @@ start
 |User|
 : Click on Enable/Disable button;
 |System|
-: Update new status for account to database;
+: Update new status for account to database;@startuml
+|User|
+start
+: (1) Click on Manage employee tab;
+|System|
+: (2) Retrieve Employee data;
+: (3) Display Manage employee screen;
+|User|
+: (4) Click on specific employee;
+|System|
+: (5) Retrieve details data;
+: (6) Display details screen;
+|User|
+: (7) Click on Enable/Disable button;
+|System|
+: (8) Update new status for account to database;
+stop
+@enduml
+
 stop
 @enduml

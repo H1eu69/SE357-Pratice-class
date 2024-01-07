@@ -13,6 +13,7 @@ loop Selects product
     C --> User: Displays selected item
 end
 C -> S: (3) importGood(items)
+deactivate C
 activate S
 S -> Database: (4) saveImportGoodInformation(items)
 activate Database
@@ -21,6 +22,7 @@ deactivate Database
 S -> S: (6) sendNotificationToWarehouseManager()
 S --> C: (7) sendSuccessMessage(message)
 deactivate S
+activate C
 C -> C: (8) generateWarehouseReceipt(items)
 C --> User: (9) showWarehouseReceipt(warehouseReceipt)
 deactivate C

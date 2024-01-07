@@ -26,3 +26,20 @@ else (no)
 endif
 stop
 @enduml
+
+@startuml
+|User|
+start
+: (1) Select product to update;
+|System|
+: (2) Retrieve product details;
+|User|
+repeat: (3) Modify product information;
+: (4) Click Update button;
+|System|
+: (5) Validate updated details;
+backward: (6) Display MSG_5;
+repeat while (Details Valid?) is (no) not (yes)
+: (7) Update product in system;
+stop
+@enduml

@@ -1,17 +1,16 @@
 @startuml
 |User|
 start
-: Click on Update button;
+: (1) Click on Update button;
 |System|
-:Display form to Update Employee;
+: (2) Display form to Update Employee;
 |User|
-repeat: Fill needed information;
-: Click on Confirm button;
+repeat: (3) Fill needed information;
+: (4) Click on Confirm button;
 |System|
 : Validate Updated Data;
-backward: Show error message;
+backward: (5) Show error message;
 repeat while (is Data valid?) is (no) not (yes)
-: Update Employee;
-: Update Employee details screen;
+: (6) Update Employee;
 stop
 @enduml

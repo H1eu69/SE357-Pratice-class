@@ -1,15 +1,15 @@
 @startuml
 |User|
 start
-: Click on Order button;
+: (1) Click on Order button;
 |System|
-: Display create order screen;
+: (2) Display create order screen;
 |User|
-repeat: Add product;
-: Input quantity;
+repeat: (3) Add product;
+: (4) Input quantity;
 repeat while(Other product?) is (yes) not (no)
-: Click on Confirm button;
+: (5) Click on Confirm button;
 |System|
-: Create order;
+: (6) Create order;
 stop
 @enduml

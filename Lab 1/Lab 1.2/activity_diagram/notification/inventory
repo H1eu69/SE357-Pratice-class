@@ -1,0 +1,14 @@
+@startuml
+|User|
+start
+: (1) Create order;
+|System|
+: (2) Check product quantity in Inventory;
+if (quantity < 50?) is (yes) then
+  : (3) Create notitifcation to branchManager;
+  : (4) Save notification;
+  : (5) Send notification to branchManager;
+else
+endif
+stop
+@enduml

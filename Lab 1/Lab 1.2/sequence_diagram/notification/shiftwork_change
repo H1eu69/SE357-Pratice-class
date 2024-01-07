@@ -1,0 +1,17 @@
+@startuml
+
+participant "Server" as S
+database Database
+
+activate S
+S -> Database: (1) updateShiftWork(data)
+activate Database
+Database --> S: (2) notifyUpdateSuccess()
+deactivate Database
+S -> S: (3) createNotification()
+S -> Database: (4) saveNotification(notification)
+activate Database
+Database --> S: (5) notifySaveSuccess()
+deactivate Database
+S -> S: (6) sendNotificationToEmployee()
+@enduml

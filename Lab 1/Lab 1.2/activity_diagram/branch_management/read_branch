@@ -1,14 +1,14 @@
 @startuml
 |User|
 start
-: Click on Manage branch tab;
+: (1) Click on Manage branch tab;
 |System|
-: Retrieve branchs data;
-: Display Manage branch screen;
+: (2) Retrieve branchs data;
+: (3) Display Manage branch screen;
 |User|
-: Click on specific branch;
+: (4) Click on specific branch;
 |System|
-: Retrieve details data;
-: Display details screen;
+: (5) Retrieve details data;
+: (6) Display details screen;
 stop
 @enduml

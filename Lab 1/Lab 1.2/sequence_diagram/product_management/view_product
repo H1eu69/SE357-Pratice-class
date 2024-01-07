@@ -7,25 +7,25 @@ database Database
 activate User
 User -> C: (1) Requests to read all product
 activate C
-C -> S: (2) getAllProductInformation()
+C -> S: (2) getAllProduct()
 activate S
-S -> Database: (3) getProductInformation()
+S -> Database: (3) getAllProduct()
 activate Database
-Database --> S: (4) allProductData(data)
+Database --> S: (4) allProductData()
 deactivate Database
-S --> C: (5) sendProductData(data)
+S --> C: (5) sendProductData()
 deactivate S
-C --> User: (6) showAllProductInformation(data)
+C --> User: (6) showAllProduct()
 deactivate C
-User -> C: (7) Requests to see specific product details
+User -> C: (7) Click on specific product
 activate C
 C -> S: (8) getProductDetails(productId)
 activate S
 S -> Database: (9) getProductDetails(productId)
 activate Database
-Database --> S: (10) productDetailsData(productData)
+Database --> S: (10) productDetails(productData)
 deactivate Database
-S --> C: (11) productDetailsData(productData)
+S --> C: (11) productDetails(productData)
 deactivate S
 C --> User: (12) showProductDetails(productData)
 deactivate C

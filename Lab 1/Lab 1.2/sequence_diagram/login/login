@@ -17,15 +17,15 @@ alt true
     deactivate Database
     S -> S: (6) isValid(loginStatus)
     alt true
-        S --> C: (7) sendSuccessMessage(message)
+        S --> C: (7) notifyLoginSuccess()
         C --> User: (8) showDashboardScreen()
     else false
-        S --> C: (9) sendFailureMessage(error)
+        S --> C: (9) notifyLoginFailure()
         deactivate S
-        C --> User: (10) showFailureMessage(error)
+        C --> User: (10) displayMessage(MSG_15)
     end
 else false
-    C --> User: (11) showFailureMessage(error)
+    C --> User: (11) displayMessage(MSG_14)
     deactivate C
 end
 @enduml

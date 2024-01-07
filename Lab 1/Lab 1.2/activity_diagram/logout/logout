@@ -1,11 +1,9 @@
 @startuml
+|User|
 start
-:Activate Logout;
-if (Confirm?) then (Yes)
-  :End Session;
-  stop
-else (No)
-  stop
-endif
-
+: (1) Sends logout request;
+|System|
+: (2) Logout account;
+: (3) Display login screen;
+stop
 @enduml

@@ -8,6 +8,7 @@ activate User
 User -> C: (1) Requests to view branch information
 activate C
 C -> S: (2) getAllBranchData()
+deactivate C
 activate S
 S -> Database: (3) getAllBranchData()
 activate Database
@@ -15,16 +16,21 @@ Database --> S: (4) allBranchData(allData)
 deactivate Database
 S --> C: (5) allBranchData(allData)
 deactivate S
+activate C
 C --> User: (6) showAllBranch(allData)
+deactivate C
 User -> C: (7) Requests to view specific branch details
+activate C
 C -> S: (8) getBranchDetails(branchId)
+deactivate C
 activate S
 S -> Database: (9) getBranchDetails(branchId)
 activate Database
-Database --> S: (10) branchDetailsData(branchId)
+Database --> S: (10) branchDetails(data)
 deactivate Database
-S --> C: (11) branchDetailsData(branchId)
+S --> C: (11) branchDetails(data)
 deactivate S
-C --> User: (12) showBranchDetails(branchId)
+activate C
+C --> User: (12) showBranchDetails(data)
 deactivate C
 @enduml

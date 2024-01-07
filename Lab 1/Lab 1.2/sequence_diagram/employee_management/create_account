@@ -16,20 +16,22 @@ alt true
     S -> Database: (6) checkAccountExists(data)
     activate Database
     Database --> S: (7) existsStatus()
+    deactivate Database
     S -> S: (8) isUserNotExists(existsStatus())
     alt true
         S -> Database: (9) createNewEmployee(data)
-        Database --> S: (10) sendCreateSuccessMessage(message)
+        activate Database
+        Database --> S: (10) notifyCreateSuccess()
         deactivate Database
-        S --> C: (11) sendCreateSuccessMessage(message)
-        C --> User: (12) showCreateSuccessMessage(message)
+        S --> C: (11) notifyCreateSuccess()
+        C --> User: (12) displayMessage(MSG_2)
     else false
-        S --> C: (13) sendUserAlreadyExistsMessage(error)
+        S --> C: (13) notifyUserAlreadyExists()
         deactivate S
-        C --> User: (14) showUserAlreadyExistsMessage(error)
+        C --> User: (14) displayMessage(MSG_8)
     end
 else false
-    C --> User: (15) showFailureMessage(error)
+    C --> User: (15) displayMessage(MSG_5)
     deactivate C
 end
 @enduml

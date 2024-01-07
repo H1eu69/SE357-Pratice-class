@@ -8,13 +8,15 @@ activate User
 User -> C: (1) Requests to update branch status
 activate C
 C -> S: (2) updateBranchStatus(branchId, status)
+deactivate C
 activate S
 S -> Database: (3) updateBranchStatus(branchId, status)
 activate Database
-Database --> S: (4) sendSuccessMessage(message)
+Database --> S: (4) notityUpdateSuccess()
 deactivate Database
-S --> C: (5) sendSuccessMessage(message)
+S --> C: (5) notityUpdateSuccess()
 deactivate S
-C --> User: (6) showSuccessMessage(message)
+activate C
+C --> User: (6) displayMessage(message)
 deactivate C
 @enduml

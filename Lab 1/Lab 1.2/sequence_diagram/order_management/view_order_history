@@ -8,23 +8,29 @@ activate User
 User -> C: (1) Requests to view orders history
 activate C
 C -> S: (2) getAllOrder()
+deactivate C
 activate S
 S -> Database: (3) getAllOrder()
 activate Database
-Database --> S: (4) allOrderData(data)
+Database --> S: (4) allOrder(data)
 deactivate Database
-S --> C: (5) allOrderData(data)
+S --> C: (5) allOrder(data)
 deactivate S
+activate C
 C --> User: (6) showAllOrder(data)
+deactivate C
 User -> C: (7) Request to view specific order details
+activate C
 C -> S: (8) getOrderDetails(orderId)
+deactivate C
 activate S
 S -> Database: (9) getOrderDetails(orderId)
 activate Database
-Database --> S: (10) orderDetailsData(orderData)
+Database --> S: (10) orderDetails(orderData)
 deactivate Database
-S --> C: (11) orderDetailsData(orderData)
+S --> C: (11) orderDetails(orderData)
 deactivate S
+activate C
 C --> User: (12) showOrderDetails(orderData)
 deactivate C
 @enduml

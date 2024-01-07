@@ -8,20 +8,22 @@ activate User
 User -> C: (1) Requests to create a branch
 activate C
 C --> User: (2) Display form to create branch
+deactivate C
 User -> C: (3) Input branch infomation
+activate C
 C -> C: (4) isBranchDataValid(data)
 alt true
     C -> S: (5) createBranch(data)
     activate S
     S -> Database: (6) createBranch(data)
     activate Database
-    Database --> S: (7) sendCreateSuccessMessage(message)
+    Database --> S: (7) notifyCreateSuccess()
     deactivate Database
-    S --> C: (8) sendSuccessMessage(message)
+    S --> C: (8) notifyCreateSuccess()
     deactivate S
-    C --> User: (9) showSuccessMessage(message)
+    C --> User: (9) displayMessage(MSG_2)
 else false
-    C --> User: (10) showFailureMessage(error)
+    C --> User: (10) displayMessage(MSG_5)
     deactivate C
 end
 @enduml

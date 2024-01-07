@@ -1,14 +1,14 @@
 @startuml
 |User|
 start
-: Click on Manage supplier tab;
+: (1) Click on Manage supplier tab;
 |System|
-: Retrieve all supplier data;
-: Display Manage supplier screen;
+: (2) Retrieve all supplier data;
+: (3) Display Manage supplier screen;
 |User|
-: Choose specific supplier;
+: (4) Choose specific supplier;
 |System|
-: Retrieve details information;
-: Display details screen;
+: (5) Retrieve details information;
+: (6) Display details screen;
 stop
 @enduml

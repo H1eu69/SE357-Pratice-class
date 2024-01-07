@@ -5,7 +5,7 @@ participant "Server" as S
 database Database
 
 activate User
-User -> C: (1) Requests to view warehouse details
+User -> C: (1) Requests to view\nwarehouse details
 activate C
 C -> S: (2) getWarehouseDetails()
 activate S
@@ -18,16 +18,16 @@ deactivate S
 C --> User: (6) showWarehouseDetails(data)
 deactivate C
 
-User -> C: (7) Requests to view import/export good history
+User -> C: (7) Requests to view\nimport/export good history
 activate C
 C -> S: (8) getHistory(isExport)
 activate S
 S -> Database: (9) getHistory(isExport)
 activate Database
-Database --> S: historyInformation(data)
+Database --> S: (10) historyInformation(data)
 deactivate Database
-S --> C: sendHistoryInformation(data)
+S --> C: (11) sendHistoryInformation(data)
 deactivate S
-C --> User: showHistoryInformation(data)
+C --> User: (12) showHistoryInformation(data)
 deactivate C
 @enduml

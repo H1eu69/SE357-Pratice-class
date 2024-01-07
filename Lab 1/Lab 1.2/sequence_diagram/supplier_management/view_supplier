@@ -8,23 +8,29 @@ activate User
 User -> C: (1) Requests to view supplier
 activate C
 C -> S: (2) getAllSupplier()
+deactivate C
 activate S
 S -> Database: (3) getAllSupplier()
 activate Database
-Database --> S: (4) allSupplierData(data)
+Database --> S: (4) allSupplier(data)
 deactivate Database
-S --> C: (5) allSupplierData(data)
+S --> C: (5) allSupplier(data)
 deactivate S
+activate C
 C --> User: (6) showAllSupplier(data)
+deactivate C
 User -> C: (7) Requests to view specific supplier details
+activate C
 C -> S: (8) getSupplierDetails(supplierId)
+deactivate C
 activate S
 S -> Database: (9) getSupplierDetails(supplierId)
 activate Database
-Database --> S: (10) supplierDetailsData(supplierData)
+Database --> S: (10) supplierDetails(supplierData)
 deactivate Database
-S --> C: (11) supplierDetailsData(supplierData)
+S --> C: (11) supplierDetails(supplierData)
 deactivate S
+activate C
 C --> User: (12) showSupplierDetails(supplierData)
 deactivate C
 @enduml

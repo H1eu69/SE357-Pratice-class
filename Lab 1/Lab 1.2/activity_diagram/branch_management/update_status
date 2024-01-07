@@ -1,9 +1,9 @@
 @startuml
 |User|
 start
-: Click on Enable/Disable button;
+: (1) Click on Enable/Disable button;
 |System|
-: Update Branch Status to database;
-: Update Branch Details screen;
+: (2) Update Branch Status to database;
+: (3) Update Branch Details screen;
 stop
 @enduml

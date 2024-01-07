@@ -1,0 +1,10 @@
+@startuml
+|User|
+start
+: (1) Click on Home tab;
+|System|
+: (2) Retrieve needed data;
+: (3) Compute data;
+: (4) Display chart;
+stop
+@enduml

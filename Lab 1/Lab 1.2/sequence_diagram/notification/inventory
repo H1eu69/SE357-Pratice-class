@@ -1,0 +1,18 @@
+@startuml
+
+participant "Server" as S
+database Database
+
+
+activate S
+S -> S: (1) checkProductQuantity()
+alt quantity<=50
+  S -> S: (2) createNotification()
+  S -> Database: (3) saveNotification()
+  activate Database
+  Database --> S: (4) notifySaveSuccess()
+  deactivate Database
+  S -> S: (5) sendNotificationToBranchManager()
+else
+end
+@enduml

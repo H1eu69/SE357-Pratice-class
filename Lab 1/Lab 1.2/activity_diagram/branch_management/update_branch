@@ -1,17 +1,17 @@
 @startuml
 |User|
 start
-: Click on Update button;
+: (1) Click on Update button;
 |System|
-: Display form to update Branch;
+: (2) Display form to update Branch;
 |User|
-repeat: Input new branch information;
-: Click on Confirm button;
+repeat: (2) Input branch information;
+: (3) Click on Confirm button;
 |System|
-: Validate new information;
-backward: Show error message;
+: (4) Validate new information;
+backward: (5) Show error message;
 repeat while (Information Valid?) is (no) not (yes)
-: Update Branch Information;
-: Update Manage Branch screen;
+: (6) Update Branch Information;
+: (7) Update Manage Branch screen;
 stop
 @enduml

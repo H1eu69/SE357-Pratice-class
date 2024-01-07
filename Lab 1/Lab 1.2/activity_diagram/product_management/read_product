@@ -1,14 +1,14 @@
 @startuml
 |User|
 start
-: Click on Manage Products tab;
+: (1) Click on Manage Products tab;
 |System|
-: Retrieve products data;
-: Display Manage Products screens;
+: (2) Retrieve products data;
+: (3) Display Manage Products screens;
 |User|
-: Click Detail button on product item;
+: (4) Click Detail button on product item;
 |System|
-: Retrieve product detail information;
-: Display Product detail screen;
+: (5) Retrieve product detail information;
+: (6) Display Product detail screen;
 stop
 @enduml

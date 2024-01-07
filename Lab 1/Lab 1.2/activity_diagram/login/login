@@ -1,12 +1,12 @@
 @startuml
 |User|
 start
-repeat: Enters credentials;
-: Sends login request;
+repeat: (1) Enters credentials;
+: (2) Sends login request;
 |System|
-: Validates credentials;
-backward: Show error message;
+: (3) Validates credentials;
+backward: (4) Show error message;
 repeat while (Valid credentials?) is (no) not (yes)
-:Sign in to App;
+: (5) Sign in to App;
 stop
 @enduml

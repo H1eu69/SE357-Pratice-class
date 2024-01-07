@@ -13,20 +13,25 @@ loop Selects product
     C --> User: Displays selected item
 end
 C -> S: (3) exportGoods(items)
+deactivate C
 activate S
 S -> Database: (4) checkGoodsQuantity(items)
 activate Database
 Database --> S: (5) quantityStatus
+S -> S: (6) checkQuantityStatus(status)
 alt Enough
-    S -> Database: (6) saveExportGoodsInformation(items)
-    Database --> S: (7) saveSuccessMessage(message)
-    S --> C: (8) sendSuccessMessage(message)
-    C -> C: (9) generateGoodDeliveryNote(items)
-    C --> User: (10) showGoodDeliveryNote(goodDeliveryNoteData)
+    S -> Database: (7) saveExportGoodsInformation(items)
+    Database --> S: (8) saveSuccessMessage(message)
+    S --> C: (9) sendSuccessMessage(message)
+    activate C
+    C -> C: (10) generateGoodDeliveryNote(items)
+    C --> User: (11) showGoodDeliveryNote(goodDeliveryNoteData)
+    deactivate C
 else Insufficient
-    S --> C: (11) sendFailureMessage(error)
+    S --> C: (12) sendFailureMessage(error)
     deactivate S
-    C --> User: (12) showFailureMessage(error)
+    activate C
+    C --> User: (13) displayMessage(MSG_16)
     deactivate C
 end
 @enduml

@@ -8,13 +8,15 @@ activate User
 User -> C: (1) Update employee account status
 activate C
 C -> S: (2) updateAccountStatus(accountId, status)
+deactivate C
 activate S
 S -> Database: (3) changeAccountStatus(accountId, status)
 activate Database
-Database --> S: (4) sendSuccessMessage(message)
+Database --> S: (4) notifyUpdateSuccess()
 deactivate Database
-S --> C: (5) sendSuccessMessage(message)
+S --> C: (5) notifyUpdateSuccess()
 deactivate S
-C --> User: (6) showSuccessMessage(message)
+activate C
+C --> User: (6) displayMessage(MSG_3)
 deactivate C
 @enduml

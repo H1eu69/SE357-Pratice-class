@@ -1,17 +1,17 @@
 @startuml
 |User|
 start
-: Click on Add button in Manage supplier screen;
+: (1) Click on Add button in Manage supplier screen;
 |System|
-: Display form to create new Supplier;
+: (2) Display form to create new Supplier;
 |User|
-repeat: Fill supplier information;
-: Click on Confirm button;
+repeat: (3) Fill supplier information;
+: (4) Click on Confirm button;
 |System|
-: Validate supplier information;
-backward: Show error message;
+: (5) Validate supplier information;
+backward: (6) Show error message;
 repeat while (Information valid?) is (no) not (yes)
-: Add new Supplier to the database;
-: Update Manage supplier screen;
+: (7) Add new Supplier to the database;
+: (8) Update Manage supplier screen;
 stop
 @enduml

@@ -8,20 +8,22 @@ activate User
 User -> C: (1) Requests to update a branch
 activate C
 C --> User: (2) Display form to update branch
+deactivate C
 User -> C: (3) Input branch infomation
+activate C
 C -> C: (4) isBranchDataValid(data)
 alt true
     C -> S: (5) updateBranch(branchId, data)
     activate S
     S -> Database: (6) updateBranch(branchId, data)
     activate Database
-    Database --> S: (7) sendUpdateSuccessMessage(message)
+    Database --> S: (7) notifyUpdateSuccess()
     deactivate Database
-    S --> C: (8) sendUpdateSuccessMessage(message)
+    S --> C: (8) notifyUpdateSuccess()
     deactivate S
-    C --> User: (9) showUpdateSuccessMessage(message)
+    C --> User: (9) displayMessage(MSG_3)
 else false
-    C --> User: (10) showFailureMessage(error)
+    C --> User: (10) displayMessage(MSG_5)
     deactivate C
 end
 @enduml
